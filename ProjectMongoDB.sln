@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32014.148
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectmongoDB.Application", "ProjectmongoDB.Application\ProjectmongoDB.Application.csproj", "{7F5B80C6-D4A3-4417-8838-9DD26A05DFE7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectmongoDB.Infra", "ProjectmongoDB.Infra\ProjectmongoDB.Infra.csproj", "{1320E58B-66C0-4432-A3BC-3FE377467AB3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectMongoDB.Svc", "ProjectMongoDB.Svc\ProjectMongoDB.Svc.csproj", "{231F586F-2FBB-4D11-82A8-9A5BCD3AC984}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7F5B80C6-D4A3-4417-8838-9DD26A05DFE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F5B80C6-D4A3-4417-8838-9DD26A05DFE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F5B80C6-D4A3-4417-8838-9DD26A05DFE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F5B80C6-D4A3-4417-8838-9DD26A05DFE7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1320E58B-66C0-4432-A3BC-3FE377467AB3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1320E58B-66C0-4432-A3BC-3FE377467AB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1320E58B-66C0-4432-A3BC-3FE377467AB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1320E58B-66C0-4432-A3BC-3FE377467AB3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{231F586F-2FBB-4D11-82A8-9A5BCD3AC984}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{231F586F-2FBB-4D11-82A8-9A5BCD3AC984}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{231F586F-2FBB-4D11-82A8-9A5BCD3AC984}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{231F586F-2FBB-4D11-82A8-9A5BCD3AC984}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {72C2FB71-53A4-4462-B7DF-81DBBEDDDAE1}
+	EndGlobalSection
+EndGlobal
