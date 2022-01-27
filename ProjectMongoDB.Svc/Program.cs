@@ -3,9 +3,9 @@ using ProjectMongoDB.Svc.Configurations;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-MongoDBExtension.Configurations(builder);
-DependencyInjection.Configurations(builder.Services);
-ServiceExtension.Configurations(builder.Services);
+builder.MongoDBSettings();
+builder.Services.DependencyInjectionSettings();
+builder.Services.ServiceExtensionSettings();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
