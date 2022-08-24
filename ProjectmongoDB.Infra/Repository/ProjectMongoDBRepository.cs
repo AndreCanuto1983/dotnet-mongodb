@@ -13,12 +13,12 @@ namespace ProjectmongoDB.Infra.Repository
     public class ProjectMongoDBRepository : IProjectMongoDBRepository
     {
         private readonly IOptions<ConfigurationDB> _options;
-        private readonly ILogger<IProjectMongoDBRepository> _logger;
+        private readonly ILogger<ProjectMongoDBRepository> _logger;
         private readonly IMongoCollection<PersonModel> _mongoCollection;
 
         public ProjectMongoDBRepository(
             IOptions<ConfigurationDB> options,
-            ILogger<IProjectMongoDBRepository> logger)
+            ILogger<ProjectMongoDBRepository> logger)
         {
             _options = options;
             _logger = logger;
@@ -37,7 +37,7 @@ namespace ProjectmongoDB.Infra.Repository
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "[ProjectMongoDBService][GetAllDataAsync]");
+                _logger.LogError("[ProjectMongoDBService][GetAllDataAsync] => EXCEPTION: {ex.Message}", ex.Message);
                 throw;
             }
         }
@@ -55,7 +55,7 @@ namespace ProjectmongoDB.Infra.Repository
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "[ProjectMongoDBService][GetByIdAsync]");
+                _logger.LogError(ex, "[ProjectMongoDBService][GetByIdAsync] => EXCEPTION: {ex.Message}", ex.Message);
                 throw;
             }
         }
@@ -73,7 +73,7 @@ namespace ProjectmongoDB.Infra.Repository
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "[ProjectMongoDBService][GetByCpfAsync]");
+                _logger.LogError(ex, "[ProjectMongoDBService][GetByCpfAsync] => EXCEPTION: {ex.Message}", ex.Message);
                 throw;
             }
         }
