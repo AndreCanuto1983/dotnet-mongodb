@@ -1,0 +1,108 @@
+DICAS: O MONGODB TEM MUITAS FUNCIONALIDADES, VOU LISTAR AQUI AS MAIS UTILIZADAS.
+
+
+INSERT EXEMPLO:
+	db.albuns.insert({"nome" : "Master of Puppets", "dataLancamento" : newDate(1986, 2, 3), "duracao" : 3286});
+	
+	db.albuns.insert({"nome" : "Seventh Son of a Seventh Son", "artista" : "Iron Maiden", "produtor" : "Martin Birch", "estudioGravacao" : "Musicland Studios", "dataLancamento" : new Date(1988, 3, 11)});
+
+	db.albuns.insert({"nome" : "Nevermind", "artista" : "Nirvana", "estudioGravacao" : ["Sound City Studios", "Smart Studios (Madison)"], "dataLancamento" : new Date(1992, 0, 11)});
+
+	db.albuns.insert({"nome" : "Somewhere Far Beyond", "dataLancamento" : new Date(1992, 5, 30), "duracao" : 3328, "artista" : {"nome" : "Blind Guardian"}});
+
+
+UPDATE EXEMPLO:
+
+Atualiza ou Adiciona o campo duracao e seu valor onde o nome do registro é "Nevermind"
+	db.albuns.update({"nome" : "Nevermind"}, {$set : {"duracao" : 3013}})
+
+Atualiza ou Adiciona o campo artista_id e seu valor onde o nome do registro é "The Dark Side of the Moon"
+	db.albuns.update( {"nome" : "The Dark Side of the Moon"}, {$set : {"artista_id" : "7"}});
+
+
+
+SELECT EXEMPLO:
+
+Busca por nome
+	db.albuns.find({"nome" : "Seventh Son of a Seventh Son"}).pretty()
+
+Se desejar retornar apenas um documento (o primeiro que satisfaz a condição ou null se nenhum documento for encontrado), utilize findone()
+	.findone() 
+
+Para buscar documentos usando parte de uma string, como o like do banco relacional. Busca tudo que contenha: And
+	db.albuns.find({"nome" : /And/})
+
+Para exibir consulta estruturada, utilize .pretty()
+	db.album.find().pretty() 
+
+Criamos uma variável artista que recebe o objeto artista cujo nome é igual a “Metallica”
+	var artista = db.artistas.findOne({"nome" : "Metallica"});
+
+Buscar pelo atributo dos subdocumento
+	db.albuns.find({"artista" : {"nome" : "Blind Guardian"}}).pretty();
+
+
+
+DELETE EXEMPLO:
+
+Delete o registro que tiver o nome Andre
+	db.albuns.remove({"nome": "Andre"})
+
+Remover todos registros equivalente ao delete sem where, use apenas se souber o que está fazendo :)
+	db.albuns.remove({})
+
+Excluir o primeiro documento que corresponde à consulta do filtro (idade: 17 anos) da coleção do aluno
+	db.student.deleteOne({age:17})
+
+
+
+OPERADORES DE CONSULTA DE COMPARAÇÃO
+
+$gt Maior que o valor específico na query.
+	db.albuns.find({"duracao" : {"$gt" : 500}}).pretty()
+
+$gte Maior ou igual ao valor específico na query.
+	db.albuns.find({"duracao" : {"$gte" : 600}}).pretty()
+
+$in Quaisquer valores que existem em um array específico em uma query
+	db.albuns.find({"duracao" : {"$in" : [1738,3286]}}).pretty()
+
+$lt Retorna valores que são menores que o valor específico na query.
+	db.albuns.find({"duracao" : {"$lt" : 1800}}).pretty()
+
+$lte Valores que são menores ou iguais que o valor específico na query
+	db.albuns.find({"duracao" : {"$lte" : 1900}}).pretty()
+
+$ne Todos os valores que não são iguais ao valor específico na query.
+	db.albuns.find({"duracao" : {"$ne" : 100}}).pretty()
+
+$nin Valores que não existem em um array específico da query.
+	db.albuns.find({"duracao" : {"$nin" : 100}}).pretty()
+
+$eq	É usado para combinar os valores dos campos que são iguais a um valor especificado.
+	db.albuns.find({"duracao" : {"$eq" : 100}}).pretty()
+
+$em	É usado para corresponder a qualquer um dos valores especificados em uma array.
+	db.contributor.find({name: {em: ["Amit", "Suman"]}}).pretty()
+
+$nin É usado para não corresponder a nenhum dos valores especificados em uma array.
+	db.contributor.find({name: {$nin: ["Amit", "Suman"]}}).pretty()
+
+
+
+OPERADORES LÓGICOS
+
+$and Retorna documentos com ambas as condições verdadeiras, o valor deve ser maior na primeira cláusula e menor na segunda
+	db.albuns.find({$and : [{"dataLancamento" : {$gte : new Date(1986, 0, 1)}}, {"dataLancamento" : {$lt : new Date(1987, 0, 1)}}]}).pretty()
+
+	db.albuns.find({$and : [{"dataLancamento" : {$gte : new Date(1986, 0, 1)}},{"dataLancamento" : {$lt : new Date(1987, 0, 1)}}]}).pretty()
+
+
+$nor Retorna documentos com ambas as condições falsas
+	db.contributor.find({$nor: [{salary: 3000}, {branch: "ECE"}]}).pretty()	
+
+$not Inverte o resultado de uma condição
+	db.contributor.find({salary: {$not: {$gt: 2000}}}).pretty()
+
+$or Retorna documentos com uma das condições verdadeiras
+	db.contributor.find({$or: [{branch: "ECE"}, {joiningYear: 2017}]}).pretty()
