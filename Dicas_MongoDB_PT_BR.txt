@@ -11,6 +11,16 @@ INSERT EXEMPLO:
 	db.albuns.insert({"nome" : "Somewhere Far Beyond", "dataLancamento" : new Date(1992, 5, 30), "duracao" : 3328, "artista" : {"nome" : "Blind Guardian"}});
 
 
+INSERIR LISTA:
+	db.artistas.insert([ {"nome" : "Metallica", "id" : "1"},
+						 {"nome" : "Megadeath", "id" : "2"},
+						 {"nome" : "Slayer", "id" : "3"},
+						 {"nome" : "Anthrax", "id" : "4"},
+						 {"nome" : "Iron Maiden", "id" : "5"},
+						 {"nome" : "Nirvana", "id" : "6"},
+						 {"nome" : "Pink Floyd", "id" : "7"}]);
+
+
 UPDATE EXEMPLO:
 
 Atualiza ou Adiciona o campo duracao e seu valor onde o nome do registro é "Nevermind"

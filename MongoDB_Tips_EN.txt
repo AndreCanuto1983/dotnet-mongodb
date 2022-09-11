@@ -2,35 +2,47 @@
 
 
 INSERT EXAMPLE:
-	db.albuns.insert({"name" : "Master of Puppets", "dateLaunch" : newDate(1986, 2, 3), "duration" : 3286});
+	db.albums.insert({"name" : "Master of Puppets", "dateLaunch" : newDate(1986, 2, 3), "duration" : 3286});
 
-	db.albuns.insert({"name" : "Seventh Son of a Seventh Son", "artist" : "Iron Maiden", "producer" : "Martin Birch", "StudioRecording" : "Musicland Studios", "dateRelease" : new Date(1988, 3, 11)});
+	db.albums.insert({"name" : "Seventh Son of a Seventh Son", "artist" : "Iron Maiden", "producer" : "Martin Birch", "StudioRecording" : "Musicland Studios", "dateRelease" : new Date(1988, 3, 11)});
 
-	db.albuns.insert({"name" : "Nevermind", "artist" : "Nirvana", "Recording studio" : ["Sound City Studios", "Smart Studios (Madison)"], "Launchdate" : new Date( 1992, 0, 11)});
+	db.albums.insert({"name" : "Nevermind", "artist" : "Nirvana", "Recording studio" : ["Sound City Studios", "Smart Studios (Madison)"], "Launchdate" : new Date( 1992, 0, 11)});
 
-	db.albuns.insert({"name" : "Somewhere Far Beyond", "releasedate" : new Date(1992, 5, 30), "duration" : 3328, "artist" : {"name" : "Blind Guardian" }});
+	db.albums.insert({"name" : "Somewhere Far Beyond", "releasedate" : new Date(1992, 5, 30), "duration" : 3328, "artist" : {"name" : "Blind Guardian" }});
+
+
+
+INSERT LIST:
+	db.artist.insert([ {"nome" : "Metallica", "id" : "1"},
+					   {"nome" : "Megadeath", "id" : "2"},
+					   {"nome" : "Slayer", "id" : "3"},
+					   {"nome" : "Anthrax", "id" : "4"},
+					   {"nome" : "Iron Maiden", "id" : "5"},
+					   {"nome" : "Nirvana", "id" : "6"},
+					   {"nome" : "Pink Floyd", "id" : "7"}]);
+
 
 
 UPDATE EXAMPLE:
 
 Updates or Adds the duration field and its value where the record name is "Nevermind"
-	db.albuns.update({"name" : "Nevermind"}, {$set : {"duration" : 3013}})
+	db.albums.update({"name" : "Nevermind"}, {$set : {"duration" : 3013}})
 
 Updates or Adds the artist_id field and its value where the record name is "The Dark Side of the Moon"
-	db.albuns.update( {"name" : "The Dark Side of the Moon"}, {$set : {"artist_id" : "7"}});
+	db.albums.update( {"name" : "The Dark Side of the Moon"}, {$set : {"artist_id" : "7"}});
 
 
 
 SELECT EXAMPLE:
 
 Search by name
-	db.albuns.find({"name" : "Seventh Son of a Seventh Son"}).pretty()
+	db.albums.find({"name" : "Seventh Son of a Seventh Son"}).pretty()
 
 If you want to return only one document (the first one that satisfies the condition or null if no document is found), use findone()
 	.findone()
 
 To fetch documents using part of a string, like the relational database like. Search everything that contains: And
-	db.albuns.find({"name" : /And/})
+	db.albums.find({"name" : /And/})
 
 To display structured query, use .pretty()
 	db.album.find().pretty()
@@ -39,17 +51,17 @@ We create an artist variable that receives the artist object whose name is equal
 	var artist = db.artistas.findOne({"name" : "Metallica"});
 
 Search by subdocument attribute
-	db.albuns.find({"artist" : {"name" : "Blind Guardian"}}).pretty();
+	db.albums.find({"artist" : {"name" : "Blind Guardian"}}).pretty();
 
 
 
 DELETE EXAMPLE:
 
 Delete the record that has the name Andre
-	db.albuns.remove({"name": "Andre"})
+	db.albums.remove({"name": "Andre"})
 
 Remove all records equivalent to delete without where, use only if you know what you're doing :)
-	db.albuns.remove({})
+	db.albums.remove({})
 
 Delete the first document that matches the filter query (age: 17 years old) from the student collection
 	db.student.deleteOne({age:17})
@@ -59,28 +71,28 @@ Delete the first document that matches the filter query (age: 17 years old) from
 COMPARISON CONSULTATION OPERATORS
 
 $gt greater than the specific value in the query.
-	db.albuns.find({"duration" : {"$gt" : 500}}).pretty()
+	db.albums.find({"duration" : {"$gt" : 500}}).pretty()
 
 $gte greater than or equal to the specific value in the query.
-	db.albuns.find({"duration" : {"$gte" : 600}}).pretty()
+	db.albums.find({"duration" : {"$gte" : 600}}).pretty()
 
 $in any values ​​that exist in a specific array in a query
-	db.albuns.find({"duration" : {"$in" : [1738,3286]}}).pretty()
+	db.albums.find({"duration" : {"$in" : [1738,3286]}}).pretty()
 
 $lt returns values ​​that are less than the specified value in the query.
-	db.albuns.find({"duration" : {"$lt" : 1800}}).pretty()
+	db.albums.find({"duration" : {"$lt" : 1800}}).pretty()
 
 $lte values ​​that are less than or equal to the specific value in the query
-	db.albuns.find({"duration" : {"$lte" : 1900}}).pretty()
+	db.albums.find({"duration" : {"$lte" : 1900}}).pretty()
 
 $n and all values ​​that are not equal to the specific value in the query.
-	db.albuns.find({"duration" : {"$ne" : 100}}).pretty()
+	db.albums.find({"duration" : {"$ne" : 100}}).pretty()
 
 $nin values ​​that do not exist in a specific array of the query.
-	db.albuns.find({"duration" : {"$nin" : 100}}).pretty()
+	db.albums.find({"duration" : {"$nin" : 100}}).pretty()
 
 $eq Is used to match the values ​​of fields that are equal to a specified value.
-	db.albuns.find({"duration" : {"$eq" : 100}}).pretty()
+	db.albums.find({"duration" : {"$eq" : 100}}).pretty()
 
 $em Is used to match any of the values ​​specified in an array.
 	db.contributor.find({name: {em: ["Amit", "Suman"]}}).pretty()
@@ -93,9 +105,9 @@ $nin Is used to match none of the values ​​specified in an array.
 LOGICAL OPERATORS
 
 $and Returns documents with both conditions true, value must be greater in the first clause and less in the second
-	db.albuns.find({$and : [{"releasedate" : {$gte : new Date(1986, 0, 1)}}, {"releasedate" : {$lt : new Date(1987, 0, 1) }}]}).pretty()
+	db.albums.find({$and : [{"releasedate" : {$gte : new Date(1986, 0, 1)}}, {"releasedate" : {$lt : new Date(1987, 0, 1) }}]}).pretty()
 
-	db.albuns.find({$and : [{"releasedate" : {$gte : new Date(1986, 0, 1)}},{"releasedate" : {$lt : new Date(1987, 0, 1) }}]}).pretty()
+	db.albums.find({$and : [{"releasedate" : {$gte : new Date(1986, 0, 1)}},{"releasedate" : {$lt : new Date(1987, 0, 1) }}]}).pretty()
 
 
 $nor Returns documents with both conditions false
